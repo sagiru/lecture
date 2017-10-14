@@ -1,0 +1,73 @@
+\newcommand{\lineDistanceMain}{1.2}
+\newcommand{\lineDistanceAppendix}{1.2}
+
+\setlength{\topskip}{\ht\strutbox}
+\geometry{paper=a4paper,left=3.5cm, right=2.5cm, top=2.5cm, headsep=1cm}
+
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\quad}{0pt}{}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection\quad}{0pt}{}
+\titleformat{\subsection}[hang]{\large\bfseries}{\thesubsection\quad}{0pt}{}
+\titleformat{\subsubsection}[hang]{\large\mdseries}{\thesubsubsection\quad}{0pt}{}
+
+\titlespacing{\chapter}{0pt}{-3em}{0pt}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+\titlespacing{\subsection}{0pt}{0pt}{0pt}
+\titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+\titlespacing{\paragraph}{0pt}{0pt}{0pt}
+
+% style of header/footer
+\fancypagestyle{mypagestyle}{%
+  \fancyhf{}
+  \fancyhead[OR]{\leftmark}
+  \fancyfoot[OR]{\thepage}
+
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[OL]{\version}}
+  \ifthenelse{\boolean{final}}{}{\fancyhead[OL]{Version vom \today}}
+
+  \fancyhead[ER]{\titel}
+  \fancyfoot[ER]{\thepage}
+
+  \ifthenelse{\boolean{final}}{}{\fancyhead[EL]{Version vom \today}}
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[EL]{\version}}
+}
+\pagestyle{mypagestyle}
+
+\renewcommand*{\chapterpagestyle}{mypagestyle} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\headfont}{\normalfont}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\frenchspacing 
+
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, breaklines=true}
+\lstset{emph={square}, emphstyle=\color{red}, emph={[2]root,base}, emphstyle={[2]\color{blue}}}
+
+\counterwithout{footnote}{chapter}
+
+\definecolor{hellgelb}{rgb}{1,1,0.9}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+\lstset{
+    float=hbp,
+    columns=flexible,
+    tabsize=2,
+    frame=single,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakautoindent=true,
+    xleftmargin=0.6cm,
+    xrightmargin=0.1cm,
+    captionpos=b
+}

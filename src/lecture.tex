@@ -1,0 +1,70 @@
+%
+% Template to use for seminar, lecture, course or workshops. Mainly for
+% students. It is inspired by http://www.minet.uni-jena.de. The base
+% configuration is set to create german single side contents. 
+%
+% Author: Sascha Girrulat <sascha@girrulat.de>
+%
+\include{header}
+\include{commands}
+\include{locales}
+
+\begin{document}
+
+\include{title}
+
+\newgeometry{left=3.5cm, right=2.5cm, top=2.9cm, bottom=2.9cm}
+
+\include{content/abstract}
+
+\fancyfoot[OR]{\pagemark}%
+\fancyfoot[EL]{\pagemark}%
+
+\tableofcontents
+
+\ifthenelse{\boolean{listoffigures}}{\listoffigures}{}
+\ifthenelse{\boolean{listoftables}}{\listoftables}{}
+
+\renewcommand{\lstlistlistingname}{Listings}
+\iftotallstlistings\lstlistoflistings\fi
+
+\input{abbreviations}
+
+% Topline inside the page header 
+\clearpage\markboth{\nomname}{\nomname}
+
+\printnomenclature
+\label{cha:abbreviations}
+\clearpage
+
+\begin{spacing}{\lineDistanceMain}
+\input{content}
+\end{spacing}
+
+% appendix if selected
+\ifthenelse{\boolean{appendix}}{
+  \begin{spacing}{\lineDistanceAppendix}
+  \begin{appendix}
+      \chapter{\apx}
+      \label{sec:appendix}
+      \input{appendix}
+  \end{appendix}
+  \end{spacing}
+}{}
+
+% glossary if selected
+\ifthenelse{\boolean{glossary}}{
+\input{glossary}
+\label{sec:glossary}
+
+% \glsaddall
+
+\printglossaries
+\addcontentsline{toc}{chapter}{Glossar}
+}{}
+
+\clearpage
+\bibliography{bibliography}
+\bibliographystyle{alphadin}
+
+\end{document}

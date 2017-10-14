@@ -25,10 +25,6 @@ setup: install setup_tex
 clean_all: clean
 	rm $(RM) count *.pdf
 
-gliederung:
-	pandoc gliederung.mdwn -o gliederung.pdf
-	mv gliederung.pdf ../target/
-
 clean:
 	test $(SKIP_CLEANUP) -ne 1 && $(RM) count \
 		*.blg \

@@ -15,7 +15,7 @@
 
 \newgeometry{left=3.5cm, right=2.5cm, top=2.9cm, bottom=2.9cm}
 
-\include{content/abstract}
+\ifthenelse{\boolean{abstract}}{\include{abstract}}{}
 
 \fancyfoot[OR]{\pagemark}%
 \fancyfoot[EL]{\pagemark}%

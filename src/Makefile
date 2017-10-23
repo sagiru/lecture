@@ -5,6 +5,8 @@
 # Author: Sascha Girrulat <sascha@girrulat.de>
 #
 #
+
+MAIN=$(SOURCE:.tex=)
 PDF=$(SOURCE:tex=pdf)
 export TEXMFHOME=$(PWD)/texmf
 UNAME_S := $(shell uname -s)
@@ -39,7 +41,7 @@ clean:
 		*.lo* \
 		*.fdb \
 		*.gl* \
-		*.nlo \
+		*.nl* \
 		*.ind \
 		*.ilg \
 		*.tex~ \
@@ -79,6 +81,8 @@ setup_tex: setup
 	sudo mktexlsr
 
 ${PDF}: ${SOURCE} Makefile
+	pdflatex  -synctex=1 -interaction=nonstopmode --src-specials ${SOURCE}
+	makeindex $(MAIN).nlo -s nomencl.ist -o $(MAIN).nls
 	latexmk -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
 
 .PHONY: src clean

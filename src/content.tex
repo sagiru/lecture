@@ -1,3 +1,5 @@
-\include{content/preamble}
+\ifthenelse{\boolean{preamble}}{\include{content/preamble}}{}
+
 \input{content/main}
-\input{content/result}
+
+\ifthenelse{\boolean{result}}{\input{content/result}}{}

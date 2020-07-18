@@ -82,6 +82,6 @@ setup_tex: setup
 
 ${PDF}: ${SOURCE} Makefile
 	pdflatex  -synctex=1 -interaction=nonstopmode --src-specials ${SOURCE}
-	latexmk -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
+	latexmk -e '$$max_repeat=8' -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
 
 .PHONY: src clean
